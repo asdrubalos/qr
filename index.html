@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Escáner QR Automático</title>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 20px; }
+    #reader { width: 300px; margin: auto; }
+  </style>
+</head>
+<body>
+  <h1>📷 Escanea tu QR</h1>
+  <div id="reader"></div>
+
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+      // Apenas detecta un QR, redirige al navegador
+      window.location.href = decodedText;
+    }
+
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess);
+  </script>
+</body>
+</html>
